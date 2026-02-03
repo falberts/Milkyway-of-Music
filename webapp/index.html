@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Milkyway of Music</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="overlay" id="ui">
+    <div class="ui-layout">
+      <div class="main-ui">
+        <h1>Milkyway of Music</h1>
+        <div class="search-container">
+          <input id="artistSearch" placeholder="Search artist..." />
+          <button id="clearSearch">Clear</button>
+          <div id="dropdown" class="dropdown hidden"></div>
+        </div>
+      </div>
+      <div class="sidebar"></div>
+    </div>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>

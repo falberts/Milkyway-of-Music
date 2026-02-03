@@ -1,0 +1,21 @@
+tqdm
+matplotlib
+numpy
+networkx
+requests
+scipy
+node2vec
+scikit-learn
+plotly
+
+# IN CASE OF VERSION CONFLICTS:
+
+# tqdm==4.67.1
+# matplotlib==3.10.8
+# numpy==1.26.4
+# networkx==3.6.1
+# requests==2.32.5
+# scipy==1.17.0
+# node2vec==0.5.0
+# scikit-learn==1.8.0
+# plotly==6.5.2
