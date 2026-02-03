@@ -14,12 +14,15 @@ class LastFM:
     BASE_URL = "https://ws.audioscrobbler.com/2.0/"
 
 
-    def __init__(self, api_key=None, regen=False, cache_dir="data/cache"):
+    def __init__(self, api_key=None, regen=False, top_limit=1000, depth=3, similar_limit=5, cache_dir="data/cache"):
         self.api_key = api_key or os.environ.get("LASTFM_API_KEY")
         self.regen = regen
         if not self.api_key:
             raise ValueError("LASTFM_API_KEY not set")
         
+        self.top_limit = top_limit
+        self.depth = depth
+        self.similar_limit = 5
         self.cache_dir = Path(cache_dir)
         self.top_artists_cache = self.cache_dir / "top_artists"
         self.similar_artists_cache = self.cache_dir / "similar_artists"
@@ -269,13 +272,13 @@ class LastFM:
         return artists
 
 
-    def create_similar_artists_cache(self, depth=3, top_limit=1000, similar_limit=5):
+    def create_similar_artists_cache(self):
         if os.path.exists(self.similar_artists_cache):
             print(f"Cache directory already exists. Skipping creation.")
             return
         self._init_cache_dirs()
 
-        top_artists = self.get_top_artists(limit=top_limit)
+        top_artists = self.get_top_artists(limit=self.top_limit)
 
         visited = set()
         queue = deque()
@@ -290,7 +293,7 @@ class LastFM:
         while queue:
             artist_name, level = queue.popleft()
 
-            if level >= depth:
+            if level >= self.depth:
                 continue
 
             if artist_name in visited:
@@ -298,7 +301,7 @@ class LastFM:
 
             visited.add(artist_name)
 
-            similar_artists = self.get_similar_artists(artist_name, limit=similar_limit)
+            similar_artists = self.get_similar_artists(artist_name, limit=self.similar_limit)
 
             for sim_artist in similar_artists:
                 sim_name = sim_artist.get("name")
