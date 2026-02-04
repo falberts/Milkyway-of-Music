@@ -3,7 +3,10 @@
 
 ![img1](img/description_img.png)
 
+## Try it out [here](https://falberts.github.io/Milkyway-of-Music/)!
+
 ### Find new music based on artists you like by exploring the music Milky Way!
+
 
 This project allows you to explore a 3D galaxy, where each star represents a musical artist. Each star can be clicked, which will open up a sidebar containing relevant information about the artist, as well as a top 10 of artists that are similar which can be used to easily find new music recommendations. Additionally, you can use the search bar for easy lookup.
 
@@ -16,7 +19,7 @@ This project allows you to explore a 3D galaxy, where each star represents a mus
 - Links to popular music platforms (Spotify, Apple Music, YouTube) if available on [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
 
 
-## How to use:
+## How to use locally:
 
 First, open up a terminal and navigate to the ./webapp/ directory:
 
